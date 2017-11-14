@@ -1,2 +1,4 @@
 # spotlight-templates-normal
-spotlight templates 常规es6环境
+spotlight scaffold template for es6
+<br><br>
+It‘s comming
