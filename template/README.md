@@ -1,12 +1,22 @@
+## spotlight-templates-normal
+spotlight scaffold template for ES6<br>
 
-## Build Setup
+## Use：
 
-``` bash
-# install dependencies
-npm install
+     spotlight init normal my-project
 
-# serve with hot reload at localhost:8080
-npm run dev
+     cd my-project
 
-# build for production with minification
-npm run prod
+     npm install
+
+     npm run dev
+
+     npm run build
+
+此模板是ES6环境<br>
+This template is base on webpack, support for es6 development <br>
+
+1.配置在build/config.js 当中；<br>
+  Configures in build/config.js <br><br>
+
+enjoy!
