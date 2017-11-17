@@ -1,12 +1,7 @@
-import a from './a'
-import b from './b'
-var app = document.querySelector("#app"),
-    p = document.createElement('p'),
-    img = document.createElement('img');
+import hot from './hot'
 
-p.innerHTML = b;
-img.src = a;
-app.appendChild(p)
-app.appendChild(img)
-
-
+hot();
+/* webpack hot reload */
+if (module.hot) {
+    module.hot.accept();
+}
