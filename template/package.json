@@ -1,13 +1,13 @@
 {
-  "name": "webpack",
+  "name": "{{name}}",
   "version": "1.0.0",
-  "description": "",
+  "description": "{{description}}",
   "main": "index.js",
   "scripts": {
     "dev": "node  build/dev/index.js",
     "build": "node build/prod/index.js"
   },
-  "author": "",
+  "author": "{{author}}",
   "license": "MIT",
   "devDependencies": {
     "autoprefixer": "^7.1.6",
