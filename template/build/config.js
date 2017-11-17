@@ -23,6 +23,7 @@ module.exports = {
     env: '"development"',
     contentBase: path.resolve(__dirname, "/"), // 需要被访问的根目录
     publicPath: "/",
+    static: 'static',
     outputPath: path.resolve(__dirname, '../../dist'), // 临时
     port: '8080',
     html5Router: false, // html5 router 
