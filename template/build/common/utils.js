@@ -92,6 +92,11 @@ exports.HtmlWPMaker = function (config) {
                 removeAttributeQuotes: true
             }
             temp.chunksSortMode = 'dependency'
+            // 多入口时 在配置中定义exclude 去屏蔽其他 chuck
+            // eg.  exclude: ['app']
+            if(config.htmlOption[i].exclude){
+                temp.excludeChunks = config.htmlOption[i].exclude
+            }
         }
         arr.push(new HtmlWebpackPlugin(temp))
     }
