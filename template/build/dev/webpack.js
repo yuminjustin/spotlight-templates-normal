@@ -12,7 +12,7 @@ module.exports = {
         })
     },
     output: {
-        filename: 'bundle.js',
+        filename: '[name].js',
         chunkFilename: '[name].bundle.js',
         publicPath: config.dev.publicPath,
         path: config.dev.outputPath
