@@ -10,8 +10,7 @@ var webpackDev = require('./webpack')
 var utils = require("../common/utils")
 var config = require("../config")
 
-webpackBase.entry.app.unshift("webpack/hot/dev-server");
-webpackBase.entry.app.unshift("webpack-dev-server/client?http://localhost:" + config.dev.port + "/");
+utils.addServerEntry(webpackBase.entry)
 
 var compiler = webpack(merge(webpackBase, webpackDev));
 var server = new WebpackDevServer(compiler, {
