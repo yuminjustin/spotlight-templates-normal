@@ -1,5 +1,6 @@
 /* 处理函数 */
 var path = require('path')
+var config = require("../config")
 var ExtractTextPlugin = require('extract-text-webpack-plugin')
 var HtmlWebpackPlugin = require('html-webpack-plugin')
 
@@ -101,4 +102,15 @@ exports.HtmlWPMaker = function (config) {
         arr.push(new HtmlWebpackPlugin(temp))
     }
     return arr;
+}
+
+// 为sever 添加入口 
+exports.addServerEntry  = function (entry){
+    
+    var entryArr = Object.keys(entry)
+ 
+    entryArr.map(function(e){
+        entry[e].unshift("webpack-dev-server/client?http://localhost:" + config.dev.port + "/","webpack/hot/dev-server")
+    })
+ 
 }
