@@ -24,7 +24,7 @@ var _build = config.build,
         },
         output: {
             filename: path.posix.join(_dir, 'js/[name].[chunkhash].js'),
-            chunkFilename: path.posix.join(_dir, 'js/[id].[chunkhash].js'),
+            chunkFilename: path.posix.join(_dir, 'js/[name].[chunkhash].js'),
             path: path.resolve(__dirname, _build.outputPath)
         },
         devtool: '#source-map',
@@ -46,25 +46,27 @@ var _build = config.build,
                 ignore: ['.*']
             }])
         ]),
-        optimization: {
+        optimization: { /* 参考 webpack 官方示例配置 特殊要求自行配置*/
+            /* https://github.com/webpack/webpack/tree/master/examples */
             splitChunks: {
-                chunks: "async",
-                minSize: 30000,
-                minChunks: 1,
-                maxAsyncRequests: 5,
-                maxInitialRequests: 3,
-                name: true,
                 cacheGroups: {
-                    default: {
+                    commons: {
+                        chunks: "initial",
                         minChunks: 2,
-                        priority: -20,
-                        reuseExistingChunk: true,
+                        maxInitialRequests: 5, 
+                        minSize: 0 
                     },
-                    vendors: {
-                        test: /[\\/]node_modules[\\/]/,
-                        priority: -10
+                    vendor: {
+                        test: /node_modules/,
+                        chunks: "initial",
+                        name: "vendor",
+                        priority: 10,
+                        enforce: true
                     }
                 }
+            },
+            runtimeChunk: {
+                name: "manifest"
             }
         }
     }
