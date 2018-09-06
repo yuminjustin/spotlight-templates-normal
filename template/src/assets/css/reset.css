@@ -1,4 +1,5 @@
 @charset "utf-8";
+
 html {
   font-family: sans-serif;
   -ms-text-size-adjust: 100%;
@@ -15,7 +16,6 @@ html,
 body {
   height: 100%;
   width: 100%;
-  overflow: hidden;
 }
 
 article,
@@ -226,9 +226,7 @@ th {
   padding: 0;
 }
 
-
 /*for Me*/
-
 blockquote,
 body,
 button,
@@ -351,9 +349,7 @@ img {
   white-space: nowrap;
 }
 
-
 /* pages  */
-
 #app {
   background: #ccc;
 }

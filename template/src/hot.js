@@ -1,4 +1,3 @@
-import a from './a'
 import b from './b'
 var app = document.querySelector("#app"),
     p = document.createElement('p'),
@@ -7,7 +6,7 @@ var app = document.querySelector("#app"),
 export default () => {
     app.innerHTML = "";
     p.innerHTML = b;
-    img.src = a;
+    img.src = "./static/image/sp_black.png";
     app.appendChild(p)
     app.appendChild(img)
 }

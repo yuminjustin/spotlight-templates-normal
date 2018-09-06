@@ -1,3 +1,4 @@
+import './assets/css/reset.css'
 import hot from './hot'
 
 hot();
