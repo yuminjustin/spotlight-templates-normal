@@ -6,7 +6,6 @@ var CopyWebpackPlugin = require('copy-webpack-plugin')
 var ExtractTextPlugin = require('extract-text-webpack-plugin')
 var OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin')
 var CleanWebpackPlugin = require('clean-webpack-plugin');
-var WebpackDeepScopeAnalysisPlugin = require('webpack-deep-scope-plugin').default;
 var utils = require('../common/utils')
 var webpackBase = require("../common/base")
 var config = require('../config')
@@ -38,7 +37,6 @@ var _build = config.build,
             new CleanWebpackPlugin(_build.outputPathName, {
                 root: path.resolve(__dirname, '../../')
             }),
-            new WebpackDeepScopeAnalysisPlugin(),
             new OptimizeCSSPlugin({}),
             new CopyWebpackPlugin([{
                 from: _build.static,
