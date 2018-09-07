@@ -19,9 +19,7 @@ var _dev = config.dev,
     WebpackConfig = {
         mode: 'development',
         module: {
-            rules: utils.styleLoaders({
-                sourceMap: false
-            })
+            rules: utils.styleLoaders(!0)
         },
         output: {
             filename: '[name].js',
