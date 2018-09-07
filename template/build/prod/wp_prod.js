@@ -44,14 +44,16 @@ var _build = config.build,
             },
             splitChunks: {
                 cacheGroups: {
-                    styles: {
-                        name: 'styles',
-                        test: /\.css$/,
-                        chunks: 'all',
-                        enforce: true
-                    },
                     vendor: {
-                        test: /node_modules/,
+                        test: _build.cssAllInOne ? function (module) {
+                            return (
+                                module.resource &&
+                                /\.js$/.test(module.resource) &&
+                                module.resource.indexOf(
+                                    path.join(__dirname, '../../node_modules')
+                                ) === 0
+                            )
+                        } : /node_modules/,
                         chunks: "all",
                         name: "vendor",
                         priority: 10,
