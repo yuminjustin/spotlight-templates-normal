@@ -20,7 +20,8 @@ module.exports = {
                 filename: 'index.html' // 输出文件
             }
         },
-        bundleAnalyzerReport: false // 打包报告
+        bundleAnalyzerReport: false, // 打包报告
+        cssAllInOne:true   // 所有css打包在一个文件中  多入口有共享样式时 请改为 false
     },
     dev: { // 开发环境
         env: '"development"',
