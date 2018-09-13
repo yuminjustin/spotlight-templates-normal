@@ -3,7 +3,7 @@ spotlight scaffold template for ES6<br>
 
 ## Use：
 
-     spotlight init normal my-project
+     spotlight normal my-project
 
      cd my-project
 
