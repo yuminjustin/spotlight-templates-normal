@@ -1,15 +1,16 @@
 /* prod webpack 配置 */
-var path = require('path')
-var webpack = require('webpack')
-var merge = require('webpack-merge')
-var CopyWebpackPlugin = require('copy-webpack-plugin')
-var UglifyJsPlugin = require("uglifyjs-webpack-plugin");
-var OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin')
-var MiniCssExtractPlugin = require("mini-css-extract-plugin");
-var CleanWebpackPlugin = require('clean-webpack-plugin');
-var utils = require('../common/utils')
-var webpackBase = require("../common/base")
-var config = require('../config')
+let path = require('path')
+let webpack = require('webpack')
+let {merge} = require('webpack-merge')
+let CopyWebpackPlugin = require('copy-webpack-plugin')
+let TerserPlugin = require('terser-webpack-plugin');
+let CssMinimizerPlugin  = require('css-minimizer-webpack-plugin');
+let MiniCssExtractPlugin = require("mini-css-extract-plugin");
+let {CleanWebpackPlugin} = require('clean-webpack-plugin');
+let utils = require('../common/utils')
+let webpackBase = require("../common/base")
+let config = require('../config')
+
 
 var _build = config.build,
     HWP_arr = utils.HtmlWPMaker(_build),
@@ -21,22 +22,26 @@ var _build = config.build,
         output: Object.assign(utils.filenames('js'),{
             path: path.resolve(__dirname, _build.outputPath)
         }),
-        devtool: '#source-map',
+        devtool: false,
         plugins: HWP_arr.concat([
             new webpack.DefinePlugin({
                 'process.env': _build.env
             }),
             new CleanWebpackPlugin(),
             new MiniCssExtractPlugin(utils.filenames('css')),
-            new CopyWebpackPlugin([{
-                from: _build.static,
-                to: _build.newStatic,
-                ignore: ['.*']
-            }])
+            new CopyWebpackPlugin({
+                patterns: [{
+                    from: _build.static,
+                    to: _build.newStatic,
+                    globOptions: {
+                        ignore: ['.*']
+                    }
+                }]
+
+            })
         ]),
         optimization: { /* 参考 webpack 官方示例配置 特殊要求自行配置*/
             /* https://github.com/webpack/webpack/tree/master/examples */
-            occurrenceOrder: true,
             runtimeChunk: {
                 name: "manifest"
             },
@@ -66,12 +71,8 @@ var _build = config.build,
                 }
             },
             minimizer: [
-                new UglifyJsPlugin({
-                    cache: true,
-                    parallel: true,
-                    sourceMap: true
-                }),
-                new OptimizeCSSPlugin({})
+                new TerserPlugin({}),
+                new CssMinimizerPlugin({})
             ]
         }
     }

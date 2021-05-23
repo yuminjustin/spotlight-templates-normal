@@ -1,8 +1,8 @@
 /* webpack基础配置 */
-var path = require('path')
-var config = require("../config")
+let path = require('path')
+let config = require("../config")
 
-var codeBase = path.join(__dirname,  '../../src'),
+let codeBase = path.join(__dirname,  '../../src'),
     _dir = process.env.NODE_ENV === 'production' ? './static' : 'static'
 
 
